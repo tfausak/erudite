@@ -9,7 +9,7 @@ describe Erudite::Parser do
 >> :something
       RUBY
       expect(examples).to eq([
-        Erudite::Example.new(":something\n")])
+        Erudite::Example.new(':something')])
     end
 
     it 'parses an example with a result' do
@@ -18,7 +18,7 @@ describe Erudite::Parser do
 => :something
       RUBY
       expect(examples).to eq([
-        Erudite::Example.new(":something\n", ":something\n")])
+        Erudite::Example.new(':something', ':something')])
     end
 
     it 'parses an example with output' do
@@ -27,7 +27,7 @@ describe Erudite::Parser do
 something
       RUBY
       expect(examples).to eq([
-        Erudite::Example.new("puts :something\n", nil, "something\n")])
+        Erudite::Example.new('puts :something', nil, 'something')])
     end
 
     it 'handles STDIN' do
@@ -36,7 +36,7 @@ something
 => nil
       RUBY
       expect(examples).to eq([
-        Erudite::Example.new("gets\n", "nil\n")])
+        Erudite::Example.new('gets', 'nil')])
     end
 
     it 'handles STDOUT' do
@@ -46,7 +46,7 @@ something
 => nil
       RUBY
       expect(examples).to eq([
-        Erudite::Example.new("puts :something\n", "nil\n", "something\n")])
+        Erudite::Example.new('puts :something', 'nil', 'something')])
     end
 
     it 'handles STDERR' do
@@ -56,7 +56,7 @@ something
 => nil
       RUBY
       expect(examples).to eq([
-        Erudite::Example.new("warn :something\n", "nil\n", "something\n")])
+        Erudite::Example.new('warn :something', 'nil', 'something')])
     end
 
     it 'handles exceptions' do
@@ -66,7 +66,7 @@ RuntimeError: something
       RUBY
       expect(examples).to eq([
         Erudite::Example.new(
-          "fail 'something'\n", nil, "RuntimeError: something\n")])
+          "fail 'something'", nil, 'RuntimeError: something')])
     end
 
     it 'handles multi-line source and output' do
@@ -78,7 +78,7 @@ thing
 => nil
       RUBY
       expect(examples).to eq([
-        Erudite::Example.new("puts 'some\nthing'\n", "nil\n", "some\nthing\n")])
+        Erudite::Example.new("puts 'some\nthing'", 'nil', "some\nthing")])
     end
 
     it 'handles multiple examples' do
@@ -90,8 +90,8 @@ thing
 => :thing
       RUBY
       expect(examples).to eq([
-        Erudite::Example.new("def some\n  :thing\nend\n"),
-        Erudite::Example.new("some\n", ":thing\n")])
+        Erudite::Example.new("def some\n  :thing\nend"),
+        Erudite::Example.new('some', ':thing')])
     end
   end
 end

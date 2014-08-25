@@ -31,23 +31,24 @@ module Erudite
     end
 
     def self.extract_source(lines)
-      lines
+      source = lines
         .select { |line| line.start_with?('>> ', '.. ') }
-        .map { |line| line[3..-1] }
-        .reduce(:+)
+        .map { |line| line[3..-1].chomp }
+      source.join("\n") unless source.empty?
     end
 
     def self.extract_result(lines)
-      lines
+      result = lines
         .select { |line| line.start_with?('=> ') }
-        .map { |line| line[3..-1] }
-        .reduce(:+)
+        .map { |line| line[3..-1].chomp }
+      result.join("\n") unless result.empty?
     end
 
     def self.extract_output(lines)
-      lines
+      output = lines
         .reject { |line| line.start_with?('>> ', '.. ', '=> ') }
-        .reduce(:+)
+        .map { |line| line.chomp }
+      output.join("\n") unless output.empty?
     end
   end
 end
