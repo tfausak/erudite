@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name = 'erudite'
-  gem.version = '0.0.0'
+  gem.version = '0.1.0'
   gem.summary = 'Executable documentation.'
   gem.description = gem.summary
   gem.homepage = 'https://github.com/tfausak/erudite'
