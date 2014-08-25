@@ -20,6 +20,7 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 1.9.3'
 
+  gem.add_development_dependency 'rake', '~> 10.3.2'
   gem.add_development_dependency 'rspec', '~> 3.0.0'
   gem.add_development_dependency 'rubocop', '~> 0.25.0'
 end
