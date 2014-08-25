@@ -2,6 +2,7 @@
 
 require 'erudite/example'
 require 'erudite/outcome'
+require 'erudite/parser'
 
 # Executable documentation.
 module Erudite
