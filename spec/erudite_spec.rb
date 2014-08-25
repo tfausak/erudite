@@ -3,5 +3,4 @@
 require 'spec_helper'
 
 describe Erudite do
-  pending
 end
