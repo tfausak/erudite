@@ -70,5 +70,10 @@ module Erudite
       actual
       valid_result? && valid_output?
     end
+
+    def ==(other)
+      source == other.source &&
+        expected == other.expected
+    end
   end
 end

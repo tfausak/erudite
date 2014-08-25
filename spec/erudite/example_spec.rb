@@ -314,4 +314,39 @@ describe Erudite::Example do
       expect(example).to_not be_pass
     end
   end
+
+  describe '#==' do
+    it 'returns true when they have the same source, result, and output' do
+      source = 'x'
+      result = 'y'
+      output = 'z'
+      a = described_class.new(source, result, output)
+      b = described_class.new(source, result, output)
+      expect(a).to eq(b)
+    end
+
+    it "returns false when they don't have the same source" do
+      result = 'y'
+      output = 'z'
+      a = described_class.new('a', result, output)
+      b = described_class.new('b', result, output)
+      expect(a).to_not eq(b)
+    end
+
+    it "returns false when they don't have the same result" do
+      source = 'x'
+      output = 'z'
+      a = described_class.new(source, 'a', output)
+      b = described_class.new(source, 'b', output)
+      expect(a).to_not eq(b)
+    end
+
+    it "returns false when they don't have the same output" do
+      source = 'x'
+      result = 'y'
+      a = described_class.new(source, result, 'a')
+      b = described_class.new(source, result, 'b')
+      expect(a).to_not eq(b)
+    end
+  end
 end

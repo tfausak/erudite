@@ -10,5 +10,10 @@ module Erudite
       @result = result
       @output = output
     end
+
+    def ==(other)
+      result == other.result &&
+        output == other.output
+    end
   end
 end
