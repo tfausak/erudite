@@ -1,5 +1,6 @@
 # coding: utf-8
 
+require 'English'
 require 'stringio'
 
 module Erudite
@@ -30,13 +31,13 @@ module Erudite
 
     def self.without_stdio
       stdin, stdout, stderr = $stdin, $stdout, $stderr
-      argv = $*
+      argv = $ARGV
       $stdin = $stdout = $stderr = io = StringIO.new
-      $*.clear
+      $ARGV.clear
       [yield, io]
     ensure
       $stdin, $stdout, $stderr = stdin, stdout, stderr
-      $*.concat(argv)
+      $ARGV.concat(argv)
     end
 
     def self.format_exception(exception)
