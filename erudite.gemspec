@@ -10,7 +10,6 @@ Gem::Specification.new do |gem|
   gem.email = 'taylor@fausak.me'
   gem.license = 'MIT'
 
-  gem.require_path = 'lib'
   gem.test_files = Dir.glob(File.join('spec', '**', '*.rb'))
   gem.files = [
     Dir.glob(File.join(gem.require_path, '**', '*.rb')),
