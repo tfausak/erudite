@@ -13,7 +13,6 @@ Gem::Specification.new do |gem|
   gem.test_files = Dir.glob(File.join('spec', '**', '*.rb'))
   gem.files = [
     Dir.glob(File.join(gem.require_path, '**', '*.rb')),
-    gem.test_files,
     %w(CHANGELOG.md CONTRIBUTING.md LICENSE.md README.md)
   ].flatten
 
