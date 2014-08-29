@@ -1,6 +1,7 @@
 # [Erudite][1]
 
 [![Gem version][2]][3]
+[![Build status][4]][5]
 
 Executable documentation.
 
@@ -55,3 +56,5 @@ end
 [1]: https://github.com/tfausak/erudite
 [2]: https://badge.fury.io/rb/erudite.svg
 [3]: http://rubygems.org/gems/erudite
+[4]: https://travis-ci.org/tfausak/erudite.svg
+[5]: https://travis-ci.org/tfausak/erudite
