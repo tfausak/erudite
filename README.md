@@ -3,6 +3,7 @@
 [![Gem version][2]][3]
 [![Build status][4]][5]
 [![Code coverage][6]][7]
+[![Code quality][8]][9]
 
 Executable documentation.
 
@@ -61,3 +62,5 @@ end
 [5]: https://travis-ci.org/tfausak/erudite
 [6]: https://img.shields.io/coveralls/tfausak/erudite.svg
 [7]: https://coveralls.io/r/tfausak/erudite
+[8]: https://codeclimate.com/github/tfausak/erudite/badges/gpa.svg
+[9]: https://codeclimate.com/github/tfausak/erudite
