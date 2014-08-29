@@ -30,9 +30,8 @@ module Erudite
     end
 
     def self.without_stdio
-      stdin, stdout, stderr = $stdin, $stdout, $stderr
-      argv = $ARGV
-      $stdin = $stdout = $stderr = io = StringIO.new
+      stdin, stdout, stderr, argv = $stdin, $stdout, $stderr, $ARGV
+      io = $stdin = $stdout = $stderr = StringIO.new
       $ARGV.clear
       [yield, io]
     ensure
