@@ -30,10 +30,13 @@ module Erudite
 
     def self.without_stdio
       stdin, stdout, stderr = $stdin, $stdout, $stderr
+      argv = $*
       $stdin = $stdout = $stderr = io = StringIO.new
+      $*.clear
       [yield, io]
     ensure
       $stdin, $stdout, $stderr = stdin, stdout, stderr
+      $*.concat(argv)
     end
 
     def self.format_exception(exception)
