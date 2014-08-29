@@ -2,6 +2,7 @@
 
 [![Gem version][2]][3]
 [![Build status][4]][5]
+[![Code coverage][6]][7]
 
 Executable documentation.
 
@@ -58,3 +59,5 @@ end
 [3]: http://rubygems.org/gems/erudite
 [4]: https://travis-ci.org/tfausak/erudite.svg
 [5]: https://travis-ci.org/tfausak/erudite
+[6]: https://img.shields.io/coveralls/tfausak/erudite.svg
+[7]: https://coveralls.io/r/tfausak/erudite
