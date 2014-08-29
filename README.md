@@ -1,5 +1,7 @@
 # [Erudite][1]
 
+[![Gem version][2]][3]
+
 Executable documentation.
 
 ``` rb
@@ -51,3 +53,5 @@ end
 ```
 
 [1]: https://github.com/tfausak/erudite
+[2]: https://badge.fury.io/rb/erudite.svg
+[3]: http://rubygems.org/gems/erudite
