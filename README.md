@@ -8,6 +8,27 @@
 
 Executable documentation.
 
+- [Installation](#installation)
+- [Usage](#usage)
+
+## Installation
+
+Add it to your Gemfile:
+
+``` rb
+gem 'erudite', '~> 0.1.0'
+```
+
+Or install it manually:
+
+``` sh
+$ gem install erudite --version 0.1.0
+```
+
+This project uses [Semantic Versioning][12].
+
+## Usage
+
 ``` rb
 examples = Erudite::Parser.parse(<<-'RUBY')
 >> 1 + 2
@@ -67,3 +88,4 @@ end
 [9]: https://codeclimate.com/github/tfausak/erudite
 [10]: https://gemnasium.com/tfausak/erudite.svg
 [11]: https://gemnasium.com/tfausak/erudite
+[12]: http://semver.org/spec/v2.0.0.html
