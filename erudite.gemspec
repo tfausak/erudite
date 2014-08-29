@@ -9,6 +9,7 @@ Gem::Specification.new do |gem|
   gem.author = 'Taylor Fausak'
   gem.email = 'taylor@fausak.me'
   gem.license = 'MIT'
+  gem.executable = 'erudite'
 
   gem.files = %w(CHANGELOG.md CONTRIBUTING.md LICENSE.md README.md) +
     Dir.glob(File.join(gem.require_path, '**', '*.rb'))
