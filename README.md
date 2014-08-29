@@ -4,6 +4,7 @@
 [![Build status][4]][5]
 [![Code coverage][6]][7]
 [![Code quality][8]][9]
+[![Dependency status][10]][11]
 
 Executable documentation.
 
@@ -64,3 +65,5 @@ end
 [7]: https://coveralls.io/r/tfausak/erudite
 [8]: https://codeclimate.com/github/tfausak/erudite/badges/gpa.svg
 [9]: https://codeclimate.com/github/tfausak/erudite
+[10]: https://gemnasium.com/tfausak/erudite.svg
+[11]: https://gemnasium.com/tfausak/erudite
