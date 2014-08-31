@@ -119,17 +119,17 @@ describe Erudite::Example do
 
     it 'redirects STDIN' do
       stdin = $stdin
-      expect(described_class.without_stdio { $stdin }).to_not eq(stdin)
+      expect(described_class.without_stdio { $stdin }.first).to_not be(stdin)
     end
 
     it 'redirects STDOUT' do
       stdout = $stdout
-      expect(described_class.without_stdio { $stdout }).to_not eq(stdout)
+      expect(described_class.without_stdio { $stdout }.first).to_not be(stdout)
     end
 
     it 'redirects STDERR' do
       stderr = $stderr
-      expect(described_class.without_stdio { $stderr }).to_not eq(stderr)
+      expect(described_class.without_stdio { $stderr }.first).to_not be(stderr)
     end
 
     it 'reconnects STDIN' do
@@ -139,7 +139,7 @@ describe Erudite::Example do
       rescue
         nil
       end
-      expect($stdin).to eq(stdin)
+      expect($stdin).to be(stdin)
     end
 
     it 'reconnects STDOUT' do
@@ -149,7 +149,7 @@ describe Erudite::Example do
       rescue
         nil
       end
-      expect($stdout).to eq(stdout)
+      expect($stdout).to be(stdout)
     end
 
     it 'reconnects STDERR' do
@@ -159,7 +159,7 @@ describe Erudite::Example do
       rescue
         nil
       end
-      expect($stderr).to eq(stderr)
+      expect($stderr).to be(stderr)
     end
 
     it 'returns the redirected IO' do
