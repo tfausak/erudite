@@ -1,6 +1,7 @@
 # coding: utf-8
 
 require 'spec_helper'
+require 'english'
 
 describe Erudite::Example do
   it 'requires some source' do
@@ -132,6 +133,13 @@ describe Erudite::Example do
       expect(described_class.without_stdio { $stderr }.first).to_not be(stderr)
     end
 
+    it 'clears ARGV' do
+      $ARGV.push(double)
+      result = described_class.without_stdio { $ARGV.dup }.first
+      $ARGV.pop
+      expect(result).to eql([])
+    end
+
     it 'reconnects STDIN' do
       stdin = $stdin
       begin
@@ -160,6 +168,12 @@ describe Erudite::Example do
         nil
       end
       expect($stderr).to be(stderr)
+    end
+
+    it 'restores ARGV' do
+      argv = $ARGV.dup
+      described_class.without_stdio { $ARGV.push('something') }
+      expect($ARGV).to eql(argv)
     end
 
     it 'returns the redirected IO' do
