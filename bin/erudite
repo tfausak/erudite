@@ -3,4 +3,4 @@
 
 require 'erudite'
 
-Erudite::Executable.run(*ARGV)
+Erudite::Executable.run(ARGF)

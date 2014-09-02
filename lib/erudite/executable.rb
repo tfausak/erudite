@@ -1,31 +1,35 @@
 # coding: utf-8
 
 module Erudite
-  # TODO
+  # Parses, runs, and outputs examples.
   class Executable
-    def self.run(*names)
-      names.each do |name|
-        contents = File.open(name) do |file|
-          file.read
-        end
-        examples = Parser.parse(contents)
-        examples.each.with_index do |example, index|
-          if example.pass?
-            puts "#{index + 1}. PASS"
-          else
-            puts <<-TXT
-#{index + 1}. FAIL
+    def self.run(io)
+      Parser.parse(io).each { |example| puts format_example(example) }
+    end
+
+    def self.format_example(example)
+      if example.pass?
+        format_passing_example(example)
+      else
+        format_failing_example(example)
+      end
+    end
+
+    def self.format_passing_example(_example)
+      '- PASS'
+    end
+
+    def self.format_failing_example(example)
+      <<-TXT
+- FAIL
   Source: #{example.source}
   Expected:
-    Output: #{example.expected.output}
-    Result: #{example.expected.result}
+    Output: #{example.expected.output.inspect}
+    Result: #{example.expected.result.inspect}
   Actual:
-    Output: #{example.actual.output}
-    Result: #{example.actual.result}
-            TXT
-          end
-        end
-      end
+    Output: #{example.actual.output.inspect}
+    Result: #{example.actual.result.inspect}
+      TXT
     end
   end
 end
