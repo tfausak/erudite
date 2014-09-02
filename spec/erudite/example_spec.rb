@@ -1,7 +1,7 @@
 # coding: utf-8
 
 require 'spec_helper'
-require 'english'
+require 'English'
 
 describe Erudite::Example do
   it 'requires some source' do
