@@ -29,8 +29,8 @@ This project uses [Semantic Versioning][12].
 
 ## Usage
 
-``` rb
-examples = Erudite::Parser.parse(<<-'RUBY')
+``` irb
+# example.irb
 >> 1 + 2
 => 3
 
@@ -48,8 +48,8 @@ hello world
 oh noes
 => nil
 
->> fail 'catastrophe!'
-RuntimeError: catastrophe!
+>> fail 'catastrophe'
+RuntimeError: catastrophe
 
 >> puts 'chunky
 .. bacon'
@@ -62,19 +62,19 @@ bacon
 .. end
 >> double(3)
 => 6
-RUBY
+```
 
-examples.each do |example|
-  if example.pass?
-    puts 'PASS'
-  else
-    puts 'FAIL'
-    puts " expected : #{example.expected.result.inspect}"
-    puts "          : #{example.expected.output.inspect}"
-    puts " actual   : #{example.actual.result.inspect}"
-    puts "          : #{example.actual.output.inspect}"
-  end
-end
+``` sh
+$ erudite example.irb
+- PASS
+- PASS
+- PASS
+- PASS
+- PASS
+- PASS
+- PASS
+- PASS
+- PASS
 ```
 
 [1]: https://github.com/tfausak/erudite
