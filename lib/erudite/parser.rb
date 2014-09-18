@@ -47,7 +47,7 @@ module Erudite
     def self.extract_output(lines)
       output = lines
         .reject { |line| line.start_with?('>> ', '.. ', '=> ') }
-        .map { |line| line.chomp }
+        .map(&:chomp)
       output.join("\n") unless output.empty?
     end
   end
