@@ -31,51 +31,77 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <div class="highlight highlight-rb"><pre><span class="n">examples</span> <span class="o">=</span> <span class="no">Erudite</span><span class="o">::</span><span class="no">Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="o">&lt;&lt;-</span><span class="sh">'</span><span class="no">RUBY</span><span class="sh">'</span><span class="p">)</span>
-<span class="sh">&gt;&gt; 1 + 2</span>
-<span class="sh">=&gt; 3</span>
+        <p><a href="http://rubygems.org/gems/erudite"><img src="https://badge.fury.io/rb/erudite.svg" alt="Gem version"></a>
+<a href="https://travis-ci.org/tfausak/erudite"><img src="https://travis-ci.org/tfausak/erudite.svg" alt="Build status"></a>
+<a href="https://coveralls.io/r/tfausak/erudite"><img src="https://img.shields.io/coveralls/tfausak/erudite.svg" alt="Code coverage"></a>
+<a href="https://codeclimate.com/github/tfausak/erudite"><img src="https://codeclimate.com/github/tfausak/erudite/badges/gpa.svg" alt="Code quality"></a>
+<a href="https://gemnasium.com/tfausak/erudite"><img src="https://gemnasium.com/tfausak/erudite.svg" alt="Dependency status"></a></p>
 
-<span class="sh">&gt;&gt; Object.new</span>
-<span class="sh">=&gt; #&lt;Object:0x...&gt;</span>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a></li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<span class="sh">&gt;&gt; gets</span>
-<span class="sh">=&gt; nil</span>
+<p>Add it to your Gemfile:</p>
 
-<span class="sh">&gt;&gt; puts 'hello world'</span>
-<span class="sh">hello world</span>
-<span class="sh">=&gt; nil</span>
+<div class="highlight highlight-rb"><pre><span class="n">gem</span> <span class="s1">'erudite'</span><span class="p">,</span> <span class="s1">'~&gt; 0.2.0'</span>
+</pre></div>
 
-<span class="sh">&gt;&gt; warn 'oh noes'</span>
-<span class="sh">oh noes</span>
-<span class="sh">=&gt; nil</span>
+<p>Or install it manually:</p>
 
-<span class="sh">&gt;&gt; fail 'catastrophe!'</span>
-<span class="sh">RuntimeError: catastrophe!</span>
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>gem install erudite --version 0.2.0
+</pre></div>
 
-<span class="sh">&gt;&gt; puts 'chunky</span>
-<span class="sh">.. bacon'</span>
-<span class="sh">chunky</span>
-<span class="sh">bacon</span>
-<span class="sh">=&gt; nil</span>
+<p>This project uses <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 
-<span class="sh">&gt;&gt; def double(n)</span>
-<span class="sh">..   2 * n</span>
-<span class="sh">.. end</span>
-<span class="sh">&gt;&gt; double(3)</span>
-<span class="sh">=&gt; 6</span>
-<span class="no">RUBY</span>
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<span class="n">examples</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">example</span><span class="o">|</span>
-  <span class="k">if</span> <span class="n">example</span><span class="o">.</span><span class="n">pass?</span>
-    <span class="nb">puts</span> <span class="s1">'PASS'</span>
-  <span class="k">else</span>
-    <span class="nb">puts</span> <span class="s1">'FAIL'</span>
-    <span class="nb">puts</span> <span class="s2">" expected : </span><span class="si">#{</span><span class="n">example</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2">"</span>
-    <span class="nb">puts</span> <span class="s2">"          : </span><span class="si">#{</span><span class="n">example</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2">"</span>
-    <span class="nb">puts</span> <span class="s2">" actual   : </span><span class="si">#{</span><span class="n">example</span><span class="o">.</span><span class="n">actual</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2">"</span>
-    <span class="nb">puts</span> <span class="s2">"          : </span><span class="si">#{</span><span class="n">example</span><span class="o">.</span><span class="n">actual</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2">"</span>
-  <span class="k">end</span>
-<span class="k">end</span>
+<div class="highlight highlight-irb"><pre><span class="go"># example.irb</span>
+<span class="gp">&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="go">=&gt; 3</span>
+
+<span class="gp">&gt;&gt; </span><span class="no">Object</span><span class="o">.</span><span class="n">new</span>
+<span class="go">=&gt; #&lt;Object:0x...&gt;</span>
+
+<span class="gp">&gt;&gt; </span><span class="nb">gets</span>
+<span class="go">=&gt; nil</span>
+
+<span class="gp">&gt;&gt; </span><span class="nb">puts</span> <span class="s1">'hello world'</span>
+<span class="go">hello world</span>
+<span class="go">=&gt; nil</span>
+
+<span class="gp">&gt;&gt; </span><span class="nb">warn</span> <span class="s1">'oh noes'</span>
+<span class="go">oh noes</span>
+<span class="go">=&gt; nil</span>
+
+<span class="gp">&gt;&gt; </span><span class="nb">fail</span> <span class="s1">'catastrophe'</span>
+<span class="go">RuntimeError: catastrophe</span>
+
+<span class="gp">&gt;&gt; </span><span class="nb">puts</span> <span class="err">'</span><span class="n">chunky</span>
+<span class="go">.. bacon'</span>
+<span class="go">chunky</span>
+<span class="go">bacon</span>
+<span class="go">=&gt; nil</span>
+
+<span class="gp">&gt;&gt; </span><span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="go">..   2 * n</span>
+<span class="go">.. end</span>
+<span class="gp">&gt;&gt; </span><span class="n">double</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">=&gt; 6</span>
+</pre></div>
+
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>erudite example.irb
+- PASS
+- PASS
+- PASS
+- PASS
+- PASS
+- PASS
+- PASS
+- PASS
+- PASS
 </pre></div>
       </section>
     </div>
