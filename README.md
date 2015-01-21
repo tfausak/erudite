@@ -78,14 +78,14 @@ $ erudite example.irb
 ```
 
 [1]: https://github.com/tfausak/erudite
-[2]: https://badge.fury.io/rb/erudite.svg
+[2]: https://img.shields.io/gem/v/erudite.svg?style=flat
 [3]: http://rubygems.org/gems/erudite
-[4]: https://travis-ci.org/tfausak/erudite.svg
+[4]: https://img.shields.io/travis/tfausak/erudite/master.svg?style=flat
 [5]: https://travis-ci.org/tfausak/erudite
-[6]: https://img.shields.io/coveralls/tfausak/erudite.svg
+[6]: https://img.shields.io/coveralls/tfausak/erudite/master.svg?style=flat
 [7]: https://coveralls.io/r/tfausak/erudite
-[8]: https://codeclimate.com/github/tfausak/erudite/badges/gpa.svg
+[8]: https://img.shields.io/codeclimate/github/tfausak/erudite.svg?style=flat
 [9]: https://codeclimate.com/github/tfausak/erudite
-[10]: https://gemnasium.com/tfausak/erudite.svg
+[10]: https://img.shields.io/gemnasium/tfausak/erudite.svg?style=flat
 [11]: https://gemnasium.com/tfausak/erudite
 [12]: http://semver.org/spec/v2.0.0.html
