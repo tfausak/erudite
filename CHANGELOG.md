@@ -2,6 +2,8 @@
 
 This project uses [Semantic Versioning][1].
 
+- Added the ability to refer to variables defined in earlier examples (#3).
+
 ## v0.2.0 (2014-09-18)
 
 - Created an executable.
