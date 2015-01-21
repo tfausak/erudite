@@ -312,19 +312,19 @@ describe Erudite::Example do
 
     it 'returns true if both the result and output match' do
       example = described_class
-        .new('p "something"', '"something"', '"something"')
+                .new('p "something"', '"something"', '"something"')
       expect(example).to be_pass
     end
 
     it "returns false if the result doesn't match" do
       example = described_class
-        .new('p "something"', '"something else"', '"something"')
+                .new('p "something"', '"something else"', '"something"')
       expect(example).to_not be_pass
     end
 
     it "returns false if the output doesn't match" do
       example = described_class
-        .new('p "something"', '"something"', '"something else"')
+                .new('p "something"', '"something"', '"something else"')
       expect(example).to_not be_pass
     end
   end
