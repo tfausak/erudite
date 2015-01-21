@@ -42,6 +42,25 @@ describe Erudite::Executable do
         TEXT
       end
     end
+
+    context 'with multiple examples' do
+      let(:input) do
+        <<-RUBY.dedent
+          >> x = 1
+          => 1
+          >> x
+          => 1
+        RUBY
+      end
+
+      it 'uses the same binding for all examples' do
+        result
+        expect($stdout.string).to eql(<<-TEXT.dedent)
+          - PASS
+          - PASS
+        TEXT
+      end
+    end
   end
 
   describe '.format_example' do

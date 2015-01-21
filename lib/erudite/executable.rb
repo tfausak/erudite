@@ -4,7 +4,11 @@ module Erudite
   # Parses, runs, and outputs examples.
   class Executable
     def self.run(io)
-      Parser.parse(io).each { |example| puts format_example(example) }
+      binding = TOPLEVEL_BINDING.dup
+      Parser.parse(io).each do |example|
+        example.binding = binding
+        puts format_example(example)
+      end
     end
 
     def self.format_example(example)
