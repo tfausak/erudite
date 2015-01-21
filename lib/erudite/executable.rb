@@ -24,7 +24,7 @@ module Erudite
     end
 
     def self.format_failing_example(example)
-      <<-TXT
+      <<-"TXT"
 - FAIL
   Source: #{example.source}
   Expected:
