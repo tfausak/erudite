@@ -2,13 +2,6 @@
 
 require 'spec_helper'
 
-# Monkey patch String to add ability to strip leading whitespace.
-class String
-  def dedent
-    gsub(/^#{self[/\A\s*/]}/, '')
-  end
-end
-
 describe Erudite::Parser do
   describe '.parse' do
     it 'parses an example without output or a result' do
