@@ -24,7 +24,7 @@ module Erudite
     end
 
     def self.format_failing_example(example)
-      <<-"TXT"
+      <<-"TEXT"
 - FAIL
   Source: #{example.source}
   Expected:
@@ -33,7 +33,7 @@ module Erudite
   Actual:
     Output: #{example.actual.output.inspect}
     Result: #{example.actual.result.inspect}
-      TXT
+      TEXT
     end
   end
 end
