@@ -25,8 +25,6 @@ Or install it manually:
 $ gem install erudite --version 0.2.0
 ```
 
-This project uses [Semantic Versioning][12].
-
 ## Usage
 
 ``` irb
@@ -88,4 +86,3 @@ $ erudite example.irb
 [9]: https://codeclimate.com/github/tfausak/erudite
 [10]: https://img.shields.io/gemnasium/tfausak/erudite.svg?style=flat
 [11]: https://gemnasium.com/tfausak/erudite
-[12]: http://semver.org/spec/v2.0.0.html
