@@ -20,7 +20,13 @@ describe Erudite::Executable do
     end
 
     context 'with input' do
-      let(:input) { ">> p(true)\ntrue\n=> true\n" }
+      let(:input) do
+        <<-RUBY.dedent
+          >> p(true)
+          true
+          => true
+        RUBY
+      end
 
       it 'returns the example' do
         expect(result).to_not be_empty
@@ -31,7 +37,9 @@ describe Erudite::Executable do
 
       it 'prints the results' do
         result
-        expect($stdout.string).to eql("- PASS\n")
+        expect($stdout.string).to eql(<<-TEXT.dedent)
+          - PASS
+        TEXT
       end
     end
   end
