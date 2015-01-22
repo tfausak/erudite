@@ -1,6 +1,9 @@
 # coding: utf-8
 
-require_relative 'lib/erudite/version'
+lib = File.join(File.dirname(__FILE__), 'lib')
+$LOAD_PATH.push(lib) unless $LOAD_PATH.include?(lib)
+
+require 'erudite/version'
 
 Gem::Specification.new do |gem|
   gem.name = 'erudite'
