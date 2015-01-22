@@ -1,10 +1,8 @@
 # coding: utf-8
 
-require_relative 'lib/erudite/version'
-
 Gem::Specification.new do |gem|
   gem.name = 'erudite'
-  gem.version = Erudite::VERSION.to_s
+  gem.version = '0.2.0'
   gem.summary = 'Executable documentation.'
   gem.description = gem.summary
   gem.homepage = 'https://github.com/tfausak/erudite'
