@@ -22,7 +22,7 @@ gem 'erudite', '~> 0.2.0'
 Or install it manually:
 
 ``` sh
-$ gem install erudite --version 0.2.0
+$ gem install erudite --version '~> 0.2.0'
 ```
 
 ## Usage
