@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Erudite::Outcome do
+describe Erudite::Example::Outcome do
   it 'requires a result' do
     expect { described_class.new }.to raise_error(ArgumentError)
   end

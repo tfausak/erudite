@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Erudite::Parser do
+describe Erudite::Example::Parser do
   describe '.parse' do
     it 'parses an example without output or a result' do
       examples = described_class.parse(<<-'RUBY'.dedent)

@@ -20,7 +20,7 @@ describe Erudite::Example do
 
   it 'uses the default expected outcome' do
     example = described_class.new(nil)
-    expect(example.expected).to be_an(Erudite::Outcome)
+    expect(example.expected).to be_an(Erudite::Example::Outcome)
     expect(example.expected.result).to be(nil)
     expect(example.expected.output).to be(nil)
   end

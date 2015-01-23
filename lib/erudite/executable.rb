@@ -5,7 +5,7 @@ module Erudite
   class Executable
     def self.run(io)
       binding = TOPLEVEL_BINDING.dup
-      Parser.parse(io).each do |example|
+      Example::Parser.parse(io).each do |example|
         example.binding = binding
         puts format_example(example)
       end

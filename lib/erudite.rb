@@ -5,7 +5,7 @@ module Erudite
 end
 
 require 'erudite/example'
+require 'erudite/example/outcome'
+require 'erudite/example/parser'
 require 'erudite/executable'
-require 'erudite/outcome'
-require 'erudite/parser'
 require 'erudite/version'
