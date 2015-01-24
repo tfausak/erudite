@@ -5,6 +5,16 @@ require 'parser/current'
 module Erudite
   # Extracts examples from comments.
   class Extractor
+    def self.group_text(text)
+      text.each_line.each_with_object([[]]) do |line, groups|
+        if line[/^\s*$/]
+          groups.push([])
+        else
+          groups.last.push(line.chomp)
+        end
+      end
+    end
+
     def self.extract_text(comment)
       if comment.inline?
         comment.text[1..-1]

@@ -3,6 +3,35 @@
 require 'spec_helper'
 
 describe Erudite::Extractor do
+  describe '.group_text' do
+    subject(:result) { described_class.group_text(text) }
+    let(:text) { '' }
+
+    context 'with two adjacent lines' do
+      let(:text) { "a\nb" }
+
+      it 'returns the lines in their own group' do
+        expect(result).to eql([%w(a b)])
+      end
+    end
+
+    context 'with two separate lines' do
+      let(:text) { "a\n\nb" }
+
+      it 'returns the lines in separate groups' do
+        expect(result).to eql([['a'], ['b']])
+      end
+    end
+
+    context 'with two lines separated by whitespace' do
+      let(:text) { "a\n \nb" }
+
+      it 'returns the lines in separate groups' do
+        expect(result).to eql([['a'], ['b']])
+      end
+    end
+  end
+
   describe '.extract_text' do
     subject(:result) { described_class.extract_text(comment) }
     let(:comment) { Parser::CurrentRuby.parse_with_comments(source).last.first }
