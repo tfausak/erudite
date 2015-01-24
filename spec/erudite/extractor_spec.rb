@@ -3,6 +3,38 @@
 require 'spec_helper'
 
 describe Erudite::Extractor do
+  describe '.groupable?' do
+    subject(:result) { described_class.groupable?(a, b) }
+    let(:a) { comments.first }
+    let(:b) { comments.last }
+    let(:comments) { Parser::CurrentRuby.parse_with_comments(source).last }
+    let(:source) { '' }
+
+    context 'with two adjacent comments' do
+      let(:source) { "# 1\n# 2" }
+
+      it 'returns true' do
+        expect(result).to be(true)
+      end
+    end
+
+    context 'with two separate comments' do
+      let(:source) { "# 1\n\n# 2" }
+
+      it 'returns false' do
+        expect(result).to be(false)
+      end
+    end
+
+    context 'with two ragged comments' do
+      let(:source) { "# 1\n # 2" }
+
+      it 'returns false' do
+        expect(result).to be(false)
+      end
+    end
+  end
+
   describe '.parse_comments' do
     subject(:result) { described_class.parse_comments(source) }
     let(:source) { '' }
