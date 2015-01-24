@@ -8,7 +8,7 @@ module Erudite
     def self.find_examples(groups)
       groups
         .reject(&:empty?)
-        .select { |lines| lines.first.start_with?('>> ') }
+        .select { |lines| lines.first[/^\s*>> /] }
     end
 
     def self.group_text(lines)

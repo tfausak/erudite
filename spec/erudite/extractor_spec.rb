@@ -30,6 +30,14 @@ describe Erudite::Extractor do
         expect(result).to eql([['>> nil']])
       end
     end
+
+    context 'with an indented example' do
+      let(:groups) { [[' >> true']] }
+
+      it 'returns the example' do
+        expect(result).to eql([[' >> true']])
+      end
+    end
   end
 
   describe '.group_text' do
