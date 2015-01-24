@@ -5,6 +5,14 @@ require 'parser/current'
 module Erudite
   # Extracts examples from comments.
   class Extractor
+    def self.extract_text(comment)
+      if comment.inline?
+        comment.text[1..-1]
+      else
+        comment.text[7..-6]
+      end
+    end
+
     def self.group_comments(comments)
       previous = comments.first
 

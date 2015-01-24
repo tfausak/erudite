@@ -3,6 +3,28 @@
 require 'spec_helper'
 
 describe Erudite::Extractor do
+  describe '.extract_text' do
+    subject(:result) { described_class.extract_text(comment) }
+    let(:comment) { Parser::CurrentRuby.parse_with_comments(source).last.first }
+    let(:source) { '' }
+
+    context 'with an inline comment' do
+      let(:source) { '# I know kung-fu.' }
+
+      it 'extracts the text' do
+        expect(result).to eql(' I know kung-fu.')
+      end
+    end
+
+    context 'with a block comment' do
+      let(:source) { "=begin\nSo you lie to yourself to be happy.\n=end" }
+
+      it 'extracts the text' do
+        expect(result).to eql('So you lie to yourself to be happy.')
+      end
+    end
+  end
+
   describe '.group_comments' do
     subject(:result) { described_class.group_comments(comments) }
     let(:comments) { [] }
