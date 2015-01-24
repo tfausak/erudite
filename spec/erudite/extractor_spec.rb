@@ -3,6 +3,35 @@
 require 'spec_helper'
 
 describe Erudite::Extractor do
+  describe '.find_examples' do
+    subject(:result) { described_class.find_examples(groups) }
+    let(:groups) { [] }
+
+    context 'with an example' do
+      let(:groups) { [['>> true']] }
+
+      it 'returns the example' do
+        expect(result).to eql([['>> true']])
+      end
+    end
+
+    context 'with an example and some text' do
+      let(:groups) { [['a'], ['>> false'], ['b']] }
+
+      it 'returns only the example' do
+        expect(result).to eql([['>> false']])
+      end
+    end
+
+    context 'with an example and some blanks' do
+      let(:groups) { [[], ['>> nil'], []] }
+
+      it 'returns only the example' do
+        expect(result).to eql([['>> nil']])
+      end
+    end
+  end
+
   describe '.group_text' do
     subject(:result) { described_class.group_text(text) }
     let(:text) { '' }

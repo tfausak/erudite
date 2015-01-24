@@ -5,6 +5,12 @@ require 'parser/current'
 module Erudite
   # Extracts examples from comments.
   class Extractor
+    def self.find_examples(groups)
+      groups
+        .reject(&:empty?)
+        .select { |lines| lines.first.start_with?('>> ') }
+    end
+
     def self.group_text(text)
       text.each_line.each_with_object([[]]) do |line, groups|
         if line[/^\s*$/]
