@@ -3,6 +3,100 @@
 require 'spec_helper'
 
 describe Erudite::Extractor do
+  describe '.group_comments' do
+    subject(:result) { described_class.group_comments(comments) }
+    let(:comments) { [] }
+
+    it 'returns an array' do
+      expect(result).to be_an(Array)
+    end
+
+    context 'with an inline comment' do
+      let(:comments) do
+        Parser::CurrentRuby.parse_with_comments(<<-'RUBY').last
+          # It was a pleasure to burn.
+        RUBY
+      end
+
+      it 'returns the comment in its own group' do
+        expect(result).to eql([comments])
+      end
+    end
+
+    context 'with multiple inline comments' do
+      let(:comments) do
+        Parser::CurrentRuby.parse_with_comments(<<-'RUBY').last
+          # It was the best of times,
+          #
+          # it was the worst of times, ...
+        RUBY
+      end
+
+      it 'returns the comments in a group' do
+        expect(result).to eql([comments])
+      end
+    end
+
+    context 'with two separate inline comments' do
+      let(:comments) do
+        Parser::CurrentRuby.parse_with_comments(<<-'RUBY').last
+          # I don't know half of you half as well as I should like;
+
+          # and I like less than half of you half as well as you deserve.
+        RUBY
+      end
+
+      it 'returns the comments in separate groups' do
+        expect(result).to eql([[comments.first], [comments.last]])
+      end
+    end
+
+    context 'with ragged inline comments' do
+      let(:comments) do
+        Parser::CurrentRuby.parse_with_comments(<<-'RUBY').last
+          # You can't win, Darth.
+            # If you strike me down,
+          # I shall become more powerful than you can possibly imagine.
+        RUBY
+      end
+
+      it 'returns the comments in separate groups' do
+        expect(result).to eql([[comments[0]], [comments[1]], [comments[2]]])
+      end
+    end
+
+    context 'with a block comment' do
+      let(:comments) do
+        Parser::CurrentRuby.parse_with_comments(<<-'RUBY').last
+=begin
+Remember - the enemy's gate is down.
+=end
+        RUBY
+      end
+
+      it 'returns the comment in its own group' do
+        expect(result).to eql([comments])
+      end
+    end
+
+    context 'with two block comments' do
+      let(:comments) do
+        Parser::CurrentRuby.parse_with_comments(<<-'RUBY').last
+=begin
+Time is an illusion.
+=end
+=begin
+Lunchtime doubly so.
+=end
+        RUBY
+      end
+
+      it 'returns the comments in separate groups' do
+        expect(result).to eql([[comments.first], [comments.last]])
+      end
+    end
+  end
+
   describe '.groupable?' do
     subject(:result) { described_class.groupable?(a, b) }
     let(:a) { comments.first }
