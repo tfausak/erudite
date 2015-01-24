@@ -11,8 +11,8 @@ module Erudite
         .select { |lines| lines.first.start_with?('>> ') }
     end
 
-    def self.group_text(text)
-      text.each_line.each_with_object([[]]) do |line, groups|
+    def self.group_text(lines)
+      lines.each_with_object([[]]) do |line, groups|
         if line[/^\s*$/]
           groups.push([])
         else

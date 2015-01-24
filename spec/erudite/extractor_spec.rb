@@ -33,11 +33,11 @@ describe Erudite::Extractor do
   end
 
   describe '.group_text' do
-    subject(:result) { described_class.group_text(text) }
-    let(:text) { '' }
+    subject(:result) { described_class.group_text(lines) }
+    let(:lines) { '' }
 
     context 'with two adjacent lines' do
-      let(:text) { "a\nb" }
+      let(:lines) { %w(a b) }
 
       it 'returns the lines in their own group' do
         expect(result).to eql([%w(a b)])
@@ -45,7 +45,7 @@ describe Erudite::Extractor do
     end
 
     context 'with two separate lines' do
-      let(:text) { "a\n\nb" }
+      let(:lines) { ['a', '', 'b'] }
 
       it 'returns the lines in separate groups' do
         expect(result).to eql([['a'], ['b']])
@@ -53,7 +53,7 @@ describe Erudite::Extractor do
     end
 
     context 'with two lines separated by whitespace' do
-      let(:text) { "a\n \nb" }
+      let(:lines) { ['a', ' ', 'b'] }
 
       it 'returns the lines in separate groups' do
         expect(result).to eql([['a'], ['b']])
