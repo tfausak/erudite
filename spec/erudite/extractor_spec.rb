@@ -78,7 +78,7 @@ describe Erudite::Extractor do
       let(:source) { '# I know kung-fu.' }
 
       it 'extracts the text' do
-        expect(result).to eql(' I know kung-fu.')
+        expect(result).to eql([' I know kung-fu.'])
       end
     end
 
@@ -86,7 +86,15 @@ describe Erudite::Extractor do
       let(:source) { "=begin\nSo you lie to yourself to be happy.\n=end" }
 
       it 'extracts the text' do
-        expect(result).to eql('So you lie to yourself to be happy.')
+        expect(result).to eql(['So you lie to yourself to be happy.'])
+      end
+    end
+
+    context 'with a multi-line block comment' do
+      let(:source) { "=begin\nThis is the last of Earth!\nI am content!\n=end" }
+
+      it 'extracts the text' do
+        expect(result).to eql(['This is the last of Earth!', 'I am content!'])
       end
     end
   end

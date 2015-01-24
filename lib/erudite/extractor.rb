@@ -23,9 +23,9 @@ module Erudite
 
     def self.extract_text(comment)
       if comment.inline?
-        comment.text[1..-1]
+        [comment.text[1..-1]]
       else
-        comment.text[7..-6]
+        comment.text[7..-6].lines.map(&:chomp)
       end
     end
 
