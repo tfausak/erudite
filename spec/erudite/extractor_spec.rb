@@ -35,7 +35,15 @@ describe Erudite::Extractor do
       let(:groups) { [[' >> true']] }
 
       it 'returns the example' do
-        expect(result).to eql([[' >> true']])
+        expect(result).to eql([['>> true']])
+      end
+    end
+
+    context 'with a ragged example' do
+      let(:groups) { [[' >> 1', '=> 2']] }
+
+      it 'does not return the example' do
+        expect(result).to eql([])
       end
     end
   end
