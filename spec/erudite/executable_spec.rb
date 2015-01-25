@@ -21,17 +21,20 @@ describe Erudite::Executable do
 
     context 'with input' do
       let(:input) do
-        <<-'RUBY'.dedent
-          >> p(true)
-          true
-          => true
+        <<-'RUBY'
+          # >> p(true)
+          # true
+          # => true
         RUBY
       end
 
-      it 'returns the example' do
+      it 'returns the example groups' do
         expect(result).to_not be_empty
-        result.each do |example|
-          expect(example).to be_an(Erudite::Example)
+        result.each do |group|
+          expect(group).to_not be_empty
+          group.each do |example|
+            expect(example).to be_an(Erudite::Example)
+          end
         end
       end
 
@@ -45,11 +48,11 @@ describe Erudite::Executable do
 
     context 'with multiple examples' do
       let(:input) do
-        <<-'RUBY'.dedent
-          >> x = 1
-          => 1
-          >> x
-          => 1
+        <<-'RUBY'
+          # >> x = 1
+          # => 1
+          # >> x
+          # => 1
         RUBY
       end
 

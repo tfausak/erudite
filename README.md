@@ -27,46 +27,32 @@ $ gem install erudite --version '~> 0.2.0'
 
 ## Usage
 
-``` irb
-# example.irb
->> 1 + 2
-=> 3
+``` rb
+# example.rb
 
->> Object.new
-=> #<Object:0x...>
+# >> x = 1
+# => 1
+# >> x + 1
+# => 2
 
->> gets
-=> nil
+# >> x = 2
+# => 2
+#
+# x + 1
+# => 3
 
->> puts 'hello world'
-hello world
-=> nil
+# >> x
+# NameError: ...
 
->> warn 'oh noes'
-oh noes
-=> nil
-
->> fail 'catastrophe'
-RuntimeError: catastrophe
-
->> puts 'chunky
-.. bacon'
-chunky
-bacon
-=> nil
-
->> def double(n)
-..   2 * n
-.. end
->> double(3)
-=> 6
+# >> f(3)
+# => 9
+def f(x)
+  x**2
+end
 ```
 
 ``` sh
-$ erudite example.irb
-- PASS
-- PASS
-- PASS
+$ erudite example.rb
 - PASS
 - PASS
 - PASS
