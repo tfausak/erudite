@@ -2,6 +2,7 @@
 
 This project uses [Semantic Versioning][1].
 
+- Added a class for extracting comments from Ruby source code (#5).
 - Added the ability to refer to variables defined in earlier examples (#3).
 
 ## v0.2.0 (2014-09-18)
