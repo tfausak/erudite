@@ -3,6 +3,105 @@
 require 'spec_helper'
 
 describe Erudite::Extractor do
+  describe '.extract' do
+    it 'returns an empty array if there are no examples' do
+      expect(described_class.extract(<<-'RUBY'))
+      RUBY
+        .to eq([])
+    end
+
+    it 'returns an example from inline comments' do
+      expect(described_class.extract(<<-'RUBY'))
+        # >> p(true)
+        # true
+        # => true
+      RUBY
+        .to eq([[Erudite::Example.new('p(true)', 'true', 'true')]])
+    end
+
+    it 'returns an example from block comments' do
+      expect(described_class.extract(<<-'RUBY'))
+=begin
+>> p(false)
+false
+=> false
+=end
+      RUBY
+        .to eq([[Erudite::Example.new('p(false)', 'false', 'false')]])
+    end
+
+    it 'extracts an example surrounded by whitespace' do
+      expect(described_class.extract(<<-'RUBY'))
+        # One plus two is...
+        #
+        # >> 1 + 2
+        # => 3
+        #
+        # three.
+      RUBY
+        .to eq([[Erudite::Example.new('1 + 2', '3')]])
+    end
+
+    it 'ignores examples not surrounded by whitespace' do
+      expect(described_class.extract(<<-'RUBY'))
+        # Four plus five is...
+        # >> 4 + 5
+        # => 9
+        # nine.
+      RUBY
+        .to eq([])
+    end
+
+    it 'groups multiple examples together' do
+      expect(described_class.extract(<<-'RUBY'))
+        # >> x = 1
+        # => 1
+        # >> x + 1
+        # => 2
+      RUBY
+        .to eq([[
+          Erudite::Example.new('x = 1', '1'),
+          Erudite::Example.new('x + 1', '2')
+        ]])
+    end
+
+    it 'groups multiple examples separated by whitespace together' do
+      expect(described_class.extract(<<-'RUBY'))
+        # >> x = 2
+        # => 2
+        #
+        # >> x * 3
+        # => 6
+      RUBY
+        .to eq([[
+          Erudite::Example.new('x = 2', '2'),
+          Erudite::Example.new('x * 3', '6')
+        ]])
+    end
+
+    it 'puts examples from different comments in different groups' do
+      expect(described_class.extract(<<-'RUBY'))
+        # >> x = 3
+        # => 3
+
+        # >> x
+        # NameError: ...
+      RUBY
+        .to eq([
+          [Erudite::Example.new('x = 3', '3')],
+          [Erudite::Example.new('x', nil, 'NameError: ...')]
+        ])
+    end
+
+    it 'ignores ragged examples' do
+      expect(described_class.extract(<<-'RUBY'))
+        #  >> nil
+        # => nil
+      RUBY
+        .to eq([])
+    end
+  end
+
   describe '.find_examples' do
     subject(:result) { described_class.find_examples(groups) }
     let(:groups) { [] }

@@ -5,6 +5,14 @@ require 'parser/current'
 module Erudite
   # Extracts examples from comments.
   class Extractor
+    def self.extract(source)
+      group_comments(parse_comments(source))
+        .map { |group| group.flat_map { |comment| extract_text(comment) } }
+        .map { |text| find_examples(group_text(text)).join("\n") }
+        .reject(&:empty?)
+        .map { |example| Example::Parser.parse(example) }
+    end
+
     def self.find_examples(groups)
       groups
         .reject(&:empty?)
