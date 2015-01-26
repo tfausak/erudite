@@ -16,13 +16,13 @@ Executable documentation.
 Add it to your Gemfile:
 
 ``` rb
-gem 'erudite', '~> 0.2.0'
+gem 'erudite', '~> 0.3.0'
 ```
 
 Or install it manually:
 
 ``` sh
-$ gem install erudite --version '~> 0.2.0'
+$ gem install erudite --version '~> 0.3.0'
 ```
 
 ## Usage

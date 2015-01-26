@@ -2,6 +2,8 @@
 
 This project uses [Semantic Versioning][1].
 
+## v0.3.0 (2015-01-26)
+
 - Modified the executable to read Ruby files instead of IRB files.
 - Added a class for extracting comments from Ruby source code (#5).
 - Added the ability to refer to variables defined in earlier examples (#3).
