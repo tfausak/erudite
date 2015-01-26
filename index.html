@@ -31,78 +31,62 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <p><a href="http://rubygems.org/gems/erudite"><img src="https://badge.fury.io/rb/erudite.svg" alt="Gem version"></a>
-<a href="https://travis-ci.org/tfausak/erudite"><img src="https://travis-ci.org/tfausak/erudite.svg" alt="Build status"></a>
-<a href="https://coveralls.io/r/tfausak/erudite"><img src="https://img.shields.io/coveralls/tfausak/erudite.svg" alt="Code coverage"></a>
-<a href="https://codeclimate.com/github/tfausak/erudite"><img src="https://codeclimate.com/github/tfausak/erudite/badges/gpa.svg" alt="Code quality"></a>
-<a href="https://gemnasium.com/tfausak/erudite"><img src="https://gemnasium.com/tfausak/erudite.svg" alt="Dependency status"></a></p>
+        <p><a href="http://rubygems.org/gems/erudite"><img src="https://img.shields.io/gem/v/erudite.svg?style=flat" alt="Gem version"></a>
+<a href="https://travis-ci.org/tfausak/erudite"><img src="https://img.shields.io/travis/tfausak/erudite/master.svg?style=flat" alt="Build status"></a>
+<a href="https://coveralls.io/r/tfausak/erudite"><img src="https://img.shields.io/coveralls/tfausak/erudite/master.svg?style=flat" alt="Code coverage"></a>
+<a href="https://codeclimate.com/github/tfausak/erudite"><img src="https://img.shields.io/codeclimate/github/tfausak/erudite.svg?style=flat" alt="Code quality"></a>
+<a href="https://gemnasium.com/tfausak/erudite"><img src="https://img.shields.io/gemnasium/tfausak/erudite.svg?style=flat" alt="Dependency status"></a></p>
+
+<p>Executable documentation.</p>
 
 <ul>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#usage">Usage</a></li>
-</ul><h2>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>Add it to your Gemfile:</p>
 
-<div class="highlight highlight-rb"><pre><span class="n">gem</span> <span class="s1">'erudite'</span><span class="p">,</span> <span class="s1">'~&gt; 0.2.0'</span>
-</pre></div>
+<div class="highlight highlight-rb"><pre><span class="pl-k">gem</span> <span class="pl-s1"><span class="pl-pds">'</span>erudite<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>~&gt; 0.3.0<span class="pl-pds">'</span></span></pre></div>
 
 <p>Or install it manually:</p>
 
-<div class="highlight highlight-sh"><pre><span class="nv">$ </span>gem install erudite --version 0.2.0
-</pre></div>
-
-<p>This project uses <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<div class="highlight highlight-sh"><pre>$ gem install erudite --version <span class="pl-s1"><span class="pl-pds">'</span>~&gt; 0.3.0<span class="pl-pds">'</span></span></pre></div>
 
 <h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<div class="highlight highlight-irb"><pre><span class="go"># example.irb</span>
-<span class="gp">&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
-<span class="go">=&gt; 3</span>
+<div class="highlight highlight-rb"><pre><span class="pl-c"># example.rb</span>
 
-<span class="gp">&gt;&gt; </span><span class="no">Object</span><span class="o">.</span><span class="n">new</span>
-<span class="go">=&gt; #&lt;Object:0x...&gt;</span>
+<span class="pl-c"># &gt;&gt; x = 1</span>
+<span class="pl-c"># =&gt; 1</span>
+<span class="pl-c"># &gt;&gt; x + 1</span>
+<span class="pl-c"># =&gt; 2</span>
 
-<span class="gp">&gt;&gt; </span><span class="nb">gets</span>
-<span class="go">=&gt; nil</span>
+<span class="pl-c"># &gt;&gt; x = 2</span>
+<span class="pl-c"># =&gt; 2</span>
+<span class="pl-c">#</span>
+<span class="pl-c"># x + 1</span>
+<span class="pl-c"># =&gt; 3</span>
 
-<span class="gp">&gt;&gt; </span><span class="nb">puts</span> <span class="s1">'hello world'</span>
-<span class="go">hello world</span>
-<span class="go">=&gt; nil</span>
+<span class="pl-c"># &gt;&gt; x</span>
+<span class="pl-c"># NameError: ...</span>
 
-<span class="gp">&gt;&gt; </span><span class="nb">warn</span> <span class="s1">'oh noes'</span>
-<span class="go">oh noes</span>
-<span class="go">=&gt; nil</span>
+<span class="pl-c"># &gt;&gt; f(3)</span>
+<span class="pl-c"># =&gt; 9</span>
+<span class="pl-k">def</span> <span class="pl-en">f</span>(<span class="pl-vpf">x</span>)
+  x<span class="pl-k">**</span><span class="pl-c1">2</span>
+<span class="pl-k">end</span></pre></div>
 
-<span class="gp">&gt;&gt; </span><span class="nb">fail</span> <span class="s1">'catastrophe'</span>
-<span class="go">RuntimeError: catastrophe</span>
-
-<span class="gp">&gt;&gt; </span><span class="nb">puts</span> <span class="err">'</span><span class="n">chunky</span>
-<span class="go">.. bacon'</span>
-<span class="go">chunky</span>
-<span class="go">bacon</span>
-<span class="go">=&gt; nil</span>
-
-<span class="gp">&gt;&gt; </span><span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="go">..   2 * n</span>
-<span class="go">.. end</span>
-<span class="gp">&gt;&gt; </span><span class="n">double</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">=&gt; 6</span>
-</pre></div>
-
-<div class="highlight highlight-sh"><pre><span class="nv">$ </span>erudite example.irb
+<div class="highlight highlight-sh"><pre>$ erudite example.rb
 - PASS
 - PASS
 - PASS
 - PASS
 - PASS
-- PASS
-- PASS
-- PASS
-- PASS
-</pre></div>
+- PASS</pre></div>
       </section>
     </div>
 
