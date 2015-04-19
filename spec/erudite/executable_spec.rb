@@ -40,8 +40,8 @@ describe Erudite::Executable do
 
       it 'prints the results' do
         result
-        expect($stdout.string).to eql(dedent(<<-'TEXT'))
-          - PASS
+        expect($stdout.string).to eql(<<-'TEXT')
+- PASS
         TEXT
       end
     end
@@ -58,9 +58,9 @@ describe Erudite::Executable do
 
       it 'uses the same binding for all examples' do
         result
-        expect($stdout.string).to eql(dedent(<<-'TEXT'))
-          - PASS
-          - PASS
+        expect($stdout.string).to eql(<<-'TEXT')
+- PASS
+- PASS
         TEXT
       end
     end
