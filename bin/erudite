@@ -3,4 +3,4 @@
 
 require 'erudite'
 
-Erudite::Executable.run(ARGF)
+exit(1) unless Erudite::Executable.run(ARGF).all? { |g| g.all?(&:pass?) }
