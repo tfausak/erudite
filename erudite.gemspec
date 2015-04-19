@@ -9,10 +9,10 @@ Gem::Specification.new do |gem|
   gem.name = 'erudite'
   gem.version = Erudite::VERSION
   gem.summary = 'Test interactive Ruby examples.'
-  gem.description = <<-TXT
+  gem.description = <<-'TEXT'
     Erudite helps you turn your documentation into tests. It is like a Ruby
     version of the Python doctest module.
-  TXT
+  TEXT
   gem.homepage = 'http://taylor.fausak.me/erudite/'
   gem.author = 'Taylor Fausak'
   gem.email = 'taylor@fausak.me'
