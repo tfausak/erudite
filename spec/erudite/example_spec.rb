@@ -250,12 +250,12 @@ describe Erudite::Example do
 
     it 'escapes meta characters' do
       pattern = described_class.pattern('some.thing')
-      expect(pattern).to eql(/some\.thing/)
+      expect(pattern).to eql(/\Asome\.thing\Z/)
     end
 
     it 'replaces "..."' do
       pattern = described_class.pattern('some...thing')
-      expect(pattern).to eql(/some.*?thing/)
+      expect(pattern).to eql(/\Asome.*?thing\Z/)
     end
   end
 

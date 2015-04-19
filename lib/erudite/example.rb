@@ -56,7 +56,7 @@ module Erudite
     end
 
     def self.pattern(string)
-      Regexp.new(Regexp.escape(string).gsub('\.\.\.', '.*?'))
+      Regexp.new('\A' + Regexp.escape(string).gsub('\.\.\.', '.*?') + '\Z')
     end
 
     def valid_result?
