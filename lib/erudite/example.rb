@@ -25,7 +25,7 @@ module Erudite
 
     def run
       [run!, nil]
-    rescue Exception => exception # rubocop:disable Lint/RescueException
+    rescue => exception
       [nil, exception]
     end
 
