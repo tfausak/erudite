@@ -5,7 +5,7 @@ require 'spec_helper'
 describe Erudite::Example::Parser do
   describe '.parse' do
     it 'parses an example without output or a result' do
-      examples = described_class.parse(<<-'RUBY'.dedent)
+      examples = described_class.parse(dedent(<<-'RUBY'))
         >> :something
       RUBY
       expect(examples).to eq([
@@ -13,7 +13,7 @@ describe Erudite::Example::Parser do
     end
 
     it 'parses an example with a result' do
-      examples = described_class.parse(<<-'RUBY'.dedent)
+      examples = described_class.parse(dedent(<<-'RUBY'))
         >> :something
         => :something
       RUBY
@@ -22,7 +22,7 @@ describe Erudite::Example::Parser do
     end
 
     it 'parses an example with output' do
-      examples = described_class.parse(<<-'RUBY'.dedent)
+      examples = described_class.parse(dedent(<<-'RUBY'))
         >> puts :something
         something
       RUBY
@@ -31,7 +31,7 @@ describe Erudite::Example::Parser do
     end
 
     it 'handles STDIN' do
-      examples = described_class.parse(<<-'RUBY'.dedent)
+      examples = described_class.parse(dedent(<<-'RUBY'))
         >> gets
         => nil
       RUBY
@@ -40,7 +40,7 @@ describe Erudite::Example::Parser do
     end
 
     it 'handles STDOUT' do
-      examples = described_class.parse(<<-'RUBY'.dedent)
+      examples = described_class.parse(dedent(<<-'RUBY'))
         >> puts :something
         something
         => nil
@@ -50,7 +50,7 @@ describe Erudite::Example::Parser do
     end
 
     it 'handles STDERR' do
-      examples = described_class.parse(<<-'RUBY'.dedent)
+      examples = described_class.parse(dedent(<<-'RUBY'))
         >> warn :something
         something
         => nil
@@ -60,7 +60,7 @@ describe Erudite::Example::Parser do
     end
 
     it 'handles exceptions' do
-      examples = described_class.parse(<<-'RUBY'.dedent)
+      examples = described_class.parse(dedent(<<-'RUBY'))
         >> fail 'something'
         RuntimeError: something
       RUBY
@@ -70,7 +70,7 @@ describe Erudite::Example::Parser do
     end
 
     it 'handles multi-line source and output' do
-      examples = described_class.parse(<<-'RUBY'.dedent)
+      examples = described_class.parse(dedent(<<-'RUBY'))
         >> puts 'some
         .. thing'
         some
@@ -82,7 +82,7 @@ describe Erudite::Example::Parser do
     end
 
     it 'handles multiple examples' do
-      examples = described_class.parse(<<-'RUBY'.dedent)
+      examples = described_class.parse(dedent(<<-'RUBY'))
         >> def some
         ..   :thing
         .. end
