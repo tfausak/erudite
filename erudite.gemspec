@@ -7,16 +7,19 @@ require 'erudite/version'
 
 Gem::Specification.new do |gem|
   gem.name = 'erudite'
-  gem.version = Erudite::VERSION.to_s
-  gem.summary = 'Executable documentation.'
-  gem.description = gem.summary
-  gem.homepage = 'https://github.com/tfausak/erudite'
+  gem.version = Erudite::VERSION
+  gem.summary = 'Test interactive Ruby examples.'
+  gem.description = <<-TXT
+    Erudite helps you turn your documentation into tests. It is like a Ruby
+    version of the Python doctest module.
+  TXT
+  gem.homepage = 'http://taylor.fausak.me/erudite/'
   gem.author = 'Taylor Fausak'
   gem.email = 'taylor@fausak.me'
   gem.license = 'MIT'
   gem.executable = 'erudite'
 
-  gem.files = %w(CHANGELOG.md CONTRIBUTING.md LICENSE.md README.md) +
+  gem.files = %w(.irbrc CHANGELOG.md LICENSE.md README.md) +
     Dir.glob(File.join(gem.require_path, '**', '*.rb'))
   gem.test_files = Dir.glob(File.join('spec', '**', '*.rb'))
 

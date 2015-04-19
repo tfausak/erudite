@@ -1,6 +1,4 @@
-# Changelog
-
-This project uses [Semantic Versioning][1].
+# Change log
 
 ## v0.3.0 (2015-01-26)
 
@@ -19,5 +17,3 @@ This project uses [Semantic Versioning][1].
 ## v0.0.0 (2014-08-23)
 
 - Initially created.
-
-[1]: http://semver.org/spec/v2.0.0.html

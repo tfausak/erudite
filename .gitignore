@@ -1,6 +1,6 @@
-.bundle/
-coverage/
-Gemfile.lock
-pkg/
-tmp/
-vendor/
+/.bundle/
+/coverage/
+/Gemfile.lock
+/pkg/
+/tmp/
+/vendor/
